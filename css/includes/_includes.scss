@@ -85,3 +85,7 @@ $is-dark: false !default;
 @import "../legacy/includes/planning";
 @import "../legacy/includes/impact";
 @import "../legacy/includes/responsive_fixes";
+
+// Custom modern dark theme
+@import "../modern-dark-theme";
+

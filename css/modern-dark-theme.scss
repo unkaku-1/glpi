@@ -1,0 +1,181 @@
+/* GLPI Modern High-Contrast Theme */
+
+// 1. FONT IMPORT
+// =============================================================================
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Outfit:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+// 2. DESIGN TOKENS (VARIABLES)
+// =============================================================================
+:root {
+    // Color Palette
+    --sidebar-bg: #1a1d21; // Dark background for sidebar
+    --content-bg: #ffffff; // White background for main content
+    --primary-color: #3b82f6; // Vibrant Blue
+    --primary-color-hover: #2563eb;
+    --text-color-dark-bg: #e5e7eb; // Light gray text for dark backgrounds
+    --text-color-light-bg: #1f2937; // Dark gray text for light backgrounds
+    --border-color-dark: #374151; // Subtle border for dark elements
+    --border-color-light: #e5e7eb; // Subtle border for light elements
+    --card-bg-light: #ffffff;
+
+    // Typography
+    --font-family-sans-serif: 'Outfit', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
+    --font-family-monospace: 'Courier New', Courier, monospace;
+
+    // Sizing & Style
+    --border-radius: 0.5rem; // 8px
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+    --box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --transition-base: all 0.2s ease-in-out;
+}
+
+// 3. GLOBAL STYLES & OVERRIDES
+// =============================================================================
+
+body {
+    background-color: var(--content-bg) !important;
+    color: var(--text-color-light-bg) !important;
+    font-family: var(--font-family-sans-serif) !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--font-family-sans-serif) !important;
+    font-weight: 700 !important;
+    color: var(--text-color-light-bg) !important;
+}
+
+a {
+    color: var(--primary-color);
+    transition: var(--transition-base);
+    &:hover {
+        color: var(--primary-color-hover);
+        text-decoration: none;
+    }
+}
+
+// 4. COMPONENT REDESIGN
+// =============================================================================
+
+// Layout: Left Dark, Right Light
+.navbar-vertical.navbar-expand-lg, .navbar-vertical .navbar-nav .nav-link, .navbar-brand-img {
+    background-color: var(--sidebar-bg) !important;
+    color: var(--text-color-dark-bg) !important;
+    border-right: 1px solid var(--border-color-dark) !important;
+
+    .nav-link-title, .nav-link-icon {
+       color: var(--text-color-dark-bg) !important;
+    }
+
+    .nav-item.active > .nav-link {
+        background-color: var(--primary-color) !important;
+    }
+}
+.navbar-vertical .navbar-nav .nav-link:hover {
+    background-color: #24282e;
+}
+
+.page-header, .navbar-expand-md {
+    background-color: var(--content-bg) !important;
+    border-bottom: 1px solid var(--border-color-light) !important;
+    box-shadow: none;
+}
+
+// Cards on light background
+.card, .glpi-card, .card-body, .panel, .tab-content, .ui-tabs-panel {
+    background-color: var(--card-bg-light) !important;
+    border: 1px solid var(--border-color-light) !important;
+    border-radius: var(--border-radius) !important;
+    box-shadow: var(--box-shadow) !important;
+    transition: var(--transition-base);
+    color: var(--text-color-light-bg);
+
+    &:hover {
+        box-shadow: var(--box-shadow-lg) !important;
+        transform: translateY(-2px);
+    }
+}
+
+// Buttons
+.btn {
+    border-radius: var(--border-radius) !important;
+    font-weight: 500 !important;
+    transition: var(--transition-base) !important;
+    box-shadow: var(--box-shadow) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+
+    &:hover {
+        background-color: var(--primary-color-hover) !important;
+        border-color: var(--primary-color-hover) !important;
+        transform: translateY(-1px);
+    }
+}
+
+.btn-secondary, .btn-default {
+    background-color: #f9fafb !important;
+    border-color: var(--border-color-light) !important;
+    color: var(--text-color-light-bg) !important;
+
+    &:hover {
+        background-color: #f3f4f6 !important; // Darken on hover
+        border-color: #d1d5db !important;
+    }
+}
+
+// Forms
+.form-control, .form-select, .select2-container--default .select2-selection--single {
+    background-color: #f9fafb !important;
+    color: var(--text-color-light-bg) !important;
+    border: 1px solid var(--border-color-light) !important;
+    border-radius: var(--border-radius) !important;
+
+    &:focus {
+        background-color: var(--content-bg) !important;
+        color: var(--text-color-light-bg) !important;
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4) !important;
+    }
+}
+
+// Tables
+.table, .dataTable {
+    color: var(--text-color-light-bg) !important;
+    th {
+        color: var(--text-color-light-bg) !important;
+        font-weight: 700 !important;
+    }
+    td, th {
+        border-color: var(--border-color-light) !important;
+    }
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: #f9fafb;
+    color: var(--text-color-light-bg);
+}
+
+// Modals
+.modal-content {
+    background-color: var(--content-bg) !important;
+    border: 1px solid var(--border-color-light) !important;
+    border-radius: var(--border-radius) !important;
+}
+.modal-header, .modal-footer {
+    border-bottom-color: var(--border-color-light) !important;
+    border-top-color: var(--border-color-light) !important;
+}
+
+// Gaussian Blur for modal backdrop
+.modal-backdrop.show {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    background-color: rgba(10, 10, 10, 0.5) !important;
+}
+
+// ECharts - No longer needs inversion with a light background
+.echarts {
+    filter: none;
+}
